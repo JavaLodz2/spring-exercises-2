@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="pl.sda"/>
+
+    <bean name="data" class="pl.sda.dao.InMemoryUserDAO">
+        <property name="usersList">
+            <list>
+                <ref bean="user01"/>
+                <ref bean="user02"/>
+                <ref bean="user03"/>
+            </list>
+        </property>
+    </bean>
+    <bean name="user01" class="pl.sda.model.User">
+        <property name="name" value="Jan"/>
+        <property name="surname" value="Kowalski"/>
+        <property name="login" value="Kowal01"/>
+        <property name="age" value="40"/>
+    </bean>
+    <bean name="user02" class="pl.sda.model.User">
+        <property name="name" value="Maria"/>
+        <property name="surname" value="Nowakowska"/>
+        <property name="login" value="Mania"/>
+        <property name="age" value="30"/>
+    </bean>
+    <bean name="user03" class="pl.sda.model.User">
+        <property name="name" value="Marian"/>
+        <property name="surname" value="Nowak"/>
+        <property name="login" value="Marnow"/>
+        <property name="age" value="44"/>
+    </bean>
+</beans>
