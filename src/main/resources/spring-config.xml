@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="pl.sda"/>
+    <bean name="userService" class="pl.sda.service.DefaultUserService"/>
 
-    <bean name="data" class="pl.sda.dao.InMemoryUserDAO">
+    <bean name="userDAO" class="pl.sda.dao.InMemoryUserDAO">
         <property name="usersList">
             <list>
                 <ref bean="user01"/>
@@ -15,6 +14,7 @@
             </list>
         </property>
     </bean>
+
     <bean name="user01" class="pl.sda.model.User">
         <property name="name" value="Jan"/>
         <property name="surname" value="Kowalski"/>

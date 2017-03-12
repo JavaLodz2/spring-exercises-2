@@ -5,10 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.sda.model.User;
 import pl.sda.service.UserService;
-
-import javax.annotation.Resource;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -32,11 +29,16 @@ public class UserServiceTest {
     public void testGetAllUsersMethod() throws Exception {
         testUserServiceInject();
         assertNotNull(userService.getAllUsers());
-        User user = new User();
-        user.setName("Jan");
-        user.setSurname("Kowalski");
-        user.setLogin("Kowal01");
-        user.setAge(40);
-        assertEquals(user, userService.getAllUsers().get(0));
+        assertEquals("Jan", userService.getAllUsers().get(0).getName());
+        assertEquals("Kowalski", userService.getAllUsers().get(0).getSurname());
+        assertEquals("Kowal01", userService.getAllUsers().get(0).getLogin());
+        assertEquals(40, userService.getAllUsers().get(0).getAge());
+    }
+
+    @Test
+    public void testGetUserByLogin() throws Exception {
+        testUserServiceInject();
+        assertEquals("Marian", userService.getUserByLogin("Marnow").getName());
+        assertEquals("Maria", userService.getUserByLogin("Mania").getName());
     }
 }
