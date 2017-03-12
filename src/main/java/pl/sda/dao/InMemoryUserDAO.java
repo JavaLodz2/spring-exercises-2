@@ -21,11 +21,27 @@ public class InMemoryUserDAO implements UserDAO {
         return usersList.stream().filter(u -> u.getLogin().equals(login)).findAny().get();
     }
 
-    public void setUsersList(List usersList) {
-        this.usersList = usersList;
+    @Override
+    public void addUser(User user) {
+        usersList.add(user);
+    }
+
+    @Override
+    public void removeUser(User user) {
+        usersList.remove(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        removeUser(user);
+        addUser(user);
     }
 
     public List getUsersList() {
         return usersList;
+    }
+
+    public void setUsersList(List usersList) {
+        this.usersList = usersList;
     }
 }

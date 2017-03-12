@@ -41,4 +41,26 @@ public class User {
     public int getAge() {
         return age;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (getAge() != user.getAge()) return false;
+        if (!getLogin().equals(user.getLogin())) return false;
+        if (getName() != null ? !getName().equals(user.getName()) : user.getName() != null) return false;
+        return getSurname() != null ? getSurname().equals(user.getSurname()) : user.getSurname() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getLogin().hashCode();
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getSurname() != null ? getSurname().hashCode() : 0);
+        result = 31 * result + getAge();
+        return result;
+    }
 }

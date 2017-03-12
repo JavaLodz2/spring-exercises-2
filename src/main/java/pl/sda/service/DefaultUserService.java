@@ -25,4 +25,19 @@ public class DefaultUserService implements UserService {
     public User getUserByLogin(String login) {
         return userDAO.getUserByLogin(login);
     }
+
+    @Override
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
+
+    @Override
+    public void removeUser(User user) {
+        userDAO.removeUser(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDAO.updateUser(user);
+    }
 }
